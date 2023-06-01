@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/Cut/main.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/TestForProject/whisperTest.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../python/Lib/site-packages/whisper/audio.py" charset="GBK" />
+  </component>
+</project>
