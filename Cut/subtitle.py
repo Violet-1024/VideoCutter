@@ -10,7 +10,7 @@ from Cut.globalvariable import GlobalVariable
 
 #修改为magick.exe的本地路径
 from moviepy.config import change_settings
-change_settings({'IMAGEMAGICK_BINARY': r'D:\python_dev\pycharm\VideoCutSoftware\Needed\ImageMagick-7.1.1-Q16-HDRI\magick.exe'})
+change_settings({'IMAGEMAGICK_BINARY': r'D:/python_dev/pycharm/VideoCutSoftware/Needed/ImageMagick-7.1.1-Q16-HDRI/magick.exe'})
 
 class Subtitle:
     def __init__(self, filename):
@@ -44,7 +44,7 @@ class Subtitle:
                 # 把utf-8换成ansi,并且在代码的工作目录中复制一份Windows/fonts中的能够显示中文的字体，在textclip里面加入属性
                 # text_clip = editor.TextClip(s.content, font="Font\\simhei.ttf", fontsize=self.globalvariable.subtitileSize,
                 #                             color='white',)
-                text_clip = editor.TextClip(s.content, font=r"../Font/simsun.ttc",
+                text_clip = editor.TextClip(s.content, font='D:/python_dev/pycharm/VideoCutSoftware/Font/simhei.ttf',
                                             fontsize=self.globalvariable.subtitileSize,
                                             color='white')
                 text_clip = text_clip.set_position(('center', 'bottom'))
@@ -78,7 +78,7 @@ class Subtitle:
                 # 修改VideoClip.py中的1177行， return [l.decode('UTF-8')[8:] for l in lines if l.startswith(b"  Font:")]
                 # 最后的解决方法是在moviepy的config_defaults.py里手动加上magick.exe的路径,但是textclip对中文不太支持
                 # 把utf-8换成ansi,并且在代码的工作目录中复制一份Windows/fonts中的能够显示中文的字体，在textclip里面加入属性
-                text_clip = editor.TextClip(s.content, font=r'../Font/simhei.ttf',
+                text_clip = editor.TextClip(s.content, font='D:/python_dev/pycharm/VideoCutSoftware/Font/simhei.ttf',
                                             fontsize=self.globalvariable.subtitileSize,
                                             color='white')
                 # text_clip = editor.TextClip(s.content, font="Font\\simhei.ttf",

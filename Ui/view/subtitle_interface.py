@@ -2,7 +2,7 @@ import time
 import threading
 
 from PyQt5.QtWidgets import QWidget, QHBoxLayout
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QTimer
 from qfluentwidgets import (FluentIcon, ToolButton, PushButton, InfoBar, InfoBarPosition, LineEdit,
                             ToolTipFilter, SpinBox)
 
@@ -79,10 +79,21 @@ class SubtitleInterface(GalleryInterface):
         thread = threading.Thread(target=cutbackend.CutBackend(file).subtitle)
         thread.start()
 
-        while thread.is_alive():
-            self.createRunningInfoBar()
-            time.sleep(5)
-        self.createFinishingInfoBar()
+        self.progressTimer = QTimer()
+        self.progressTimer.timeout.connect(lambda: self.updateProgress(thread, self.progressTimer))
+        self.progressTimer.start(6000)
+
+    def updateProgress(self, thread, progressTimer):
+        # 更新进度
+        self.createRunningInfoBar()
+
+        if thread.is_alive():
+            # 如果进程还在运行，延迟 6 秒后再次更新进度
+            pass
+        else:
+            # 如果进程已经结束，更新完成信息
+            progressTimer.stop()
+            self.createFinishingInfoBar()
 
 
     def createErrorInfoBar(self):

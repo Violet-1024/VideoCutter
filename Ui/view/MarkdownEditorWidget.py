@@ -99,7 +99,6 @@ class MarkdownEditor(QWidget):
 
     def markdown_to_html(self, text: str) -> str:
         text = markdown2.markdown(text, extras=["break-on-newline"])
-
         return text
 
     def savefile(self):
